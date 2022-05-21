@@ -1,0 +1,22 @@
+What is a File?
+A file is a collection of data stored on a disk with a specific name, extension, and directory path. 
+When you open File using C# for reading and writing purposes it becomes Stream.
+
+
+What is Stream?
+A stream is a sequence of bytes traveling from a source to a destination over a communication path. There are two main streams: the input stream and the output stream. 
+The input stream is used for reading data from the file (read operation) and the output stream is used for writing into the file (write operation). 
+There are two types of streams are used:
+
+Input stream: This stream is used to read data from a file, which is known as a read operation.
+Output stream: This stream is used to write data into a file, which is known as a write operation.
+
+
+File Handling in C#
+Generally, we use the file to store data. The term File Handling in C# refers to the various operations that we can perform on a file such as creating a file, 
+reading data from the file, writing data into the file, appending the file, etc.
+
+Generally, two basic operations we mostly perform on a file that is reading data from a file and writing data to a file. 
+One more thing that you need to remember the file becomes a stream when we open the file either for writing or for reading.
+
+
