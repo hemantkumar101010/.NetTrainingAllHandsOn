@@ -1,0 +1,4 @@
+
+Productid	categorytype	 productname	Pquantity	price
+1		2		Apple		34		999
+2		3		Banana		23		543

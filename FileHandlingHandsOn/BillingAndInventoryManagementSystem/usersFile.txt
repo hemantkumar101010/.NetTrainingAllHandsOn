@@ -1,0 +1,6 @@
+FName	LName	Id	Phone	Email
+Virat	Kohli	1	1111	virat@
+Salman	Khan	2	3212	sal@
+katrina	kaif	3	4342	kat@
+Hemant	Tiwari	6	4234	hemu@
+Rahul	Rwt	3	2342	r@
