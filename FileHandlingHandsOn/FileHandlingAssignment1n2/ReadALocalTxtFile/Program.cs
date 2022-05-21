@@ -12,8 +12,8 @@ namespace ReadALocalTxtFile
         {
 
             //First Assignment
-            ReadFromTxtFile readFromTxtFile = new ReadFromTxtFile();
-            readFromTxtFile.ReadFile(); 
+            //ReadFromTxtFile readFromTxtFile = new ReadFromTxtFile();
+           // readFromTxtFile.ReadFile(); 
 
 
             //Second assignment

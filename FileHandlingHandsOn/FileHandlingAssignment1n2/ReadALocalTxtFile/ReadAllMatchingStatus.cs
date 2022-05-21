@@ -41,7 +41,7 @@ namespace ReadALocalTxtFile
         {
             FileStream fileStreamObj = new FileStream(@"C:\Users\iamte\Desktop\networkLogs1.txt", FileMode.Open, FileAccess.Read);
             StreamReader streamReaderObj = new StreamReader(fileStreamObj);
-            Console.WriteLine("Id\tSource\t\tDestination\tDate\t    Time\tStatus\tNetwork");
+            Console.WriteLine("Id\tSource\t\tDestination\tDate\t    Time\tStatus\t   Network");
             
             //declaring a empty string for concatanate line between empty lines and then search for desired status records
             
@@ -63,7 +63,7 @@ namespace ReadALocalTxtFile
                             string[] myValues = line.Split(':');
                             if (myValues[0] == "Network")
                             {
-                                result += myValues[1];
+                                result += "   "+myValues[1];
                                 if (result.Contains(status))
                                 {
                                     Console.WriteLine(result);
@@ -72,7 +72,7 @@ namespace ReadALocalTxtFile
                             }
                             else
                             {
-                                result = result + myValues[1] +"\t";
+                                result =result + myValues[1] +"\t";
                             }
                         }              
                 }
