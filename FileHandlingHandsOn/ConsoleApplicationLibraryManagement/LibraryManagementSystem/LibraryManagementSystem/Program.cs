@@ -29,14 +29,24 @@ namespace LibraryManagementSystem
                     Console.WriteLine("Please chooes one of the following action:");
                     Console.WriteLine("a. Add a book in the library.");
                     Console.WriteLine("b. Show the current available books in the library.");
+                    Console.WriteLine("c. Show current inventory details.");
                     char choice1 = Convert.ToChar(Console.ReadLine());
                     switch (choice1)
                     {
                         case 'a':
+                            Console.WriteLine("");
                             librarian.AddBookToTheLibrary();
+                           
                             break; 
                         case 'b':
+                            Console.WriteLine("");
                             librarian.ShowAvailableBooksInLibrary();
+                           
+                            break;
+                        case 'c':
+                            Console.WriteLine("");
+                            users.ShowInventoryDetails();
+                            
                             break;                                                 
                     }                    
                      break;
@@ -50,7 +60,9 @@ namespace LibraryManagementSystem
                     switch (choice2)
                     {
                         case 'a':
+                            Console.WriteLine("");
                             users.BorrowBook();
+                            
                             break;
                         case 'b':
                             librarian.ShowAvailableBooksInLibrary();

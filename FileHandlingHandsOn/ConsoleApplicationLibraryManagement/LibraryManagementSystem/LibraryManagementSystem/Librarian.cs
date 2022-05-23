@@ -20,7 +20,8 @@ namespace LibraryManagementSystem
             int counter = 1, totalBooks;
             Console.WriteLine("Enter total number Of books you want to store in the library");
             totalBooks = Convert.ToInt32(Console.ReadLine());
-
+            //streamWriterObj.WriteLine("BookId\tBookName\tBookWriter");
+           
             while (counter <= totalBooks)
             {
 
