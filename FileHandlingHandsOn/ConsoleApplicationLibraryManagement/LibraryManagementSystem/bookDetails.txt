@@ -1,8 +1,9 @@
-1,ReactJs,Mike,,,,,
-2,Java,James,,,,,
-3,C,John,,,,,
-4,C#,Abhimanyu,,,,,
-5,Angularjs,Mike,,
-6,SDLC,Vicky,,
-7,.Net,Hemant,,
-8,Swift,Taylor,,
+1,ReactJs,Mike
+2,Java,James
+3,C,John
+4,C#,Abhimanyu
+5,Angularjs,Mike
+6,SDLC,Vicky
+7,.Net,Hemant
+8,Swift,Taylor
+9,C++,James

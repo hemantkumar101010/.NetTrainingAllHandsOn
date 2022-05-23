@@ -53,7 +53,7 @@ namespace LibraryManagementSystem
 
                 streamWriterObj.Write(borrowerId + ",");
 
-                streamWriterObj.Write(bookName + ",");
+                streamWriterObj.Write(bookName);
                  
                 issueDate=DateTime.Now.ToShortDateString();
                 streamWriterObj.WriteLine(issueDate);
