@@ -37,7 +37,6 @@ namespace CharacterCountingSystem
 
                     }
                     Console.WriteLine(charactersInString[i] + ":" + " " + counter);
-
                     //if a chars gets all frequency then at last store it to updateString 
                     updateString += charactersInString[i];
                 }
