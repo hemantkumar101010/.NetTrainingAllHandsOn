@@ -7,4 +7,4 @@
 7,.Net,Hemant,,,
 8,Html,James
 9,LearnC#,Amit
-10,LearnJava,Hemant
+10,LearnC,Hemant

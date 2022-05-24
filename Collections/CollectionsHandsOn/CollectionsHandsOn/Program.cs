@@ -32,11 +32,11 @@ namespace CollectionsHandsOn
 
             //2.creating a nameArr
 
-            string [] nameArr = { "Tim", "Martin", "Nikki", "Sara" };
+            string[] nameArr = { "Tim", "Martin", "Nikki", "Sara" };
             Console.WriteLine("Values of nameArr are:");
             for (int i = 0; i < nameArr.Length; i++)
             {
-                Console.Write(nameArr[i]+" ");
+                Console.Write(nameArr[i] + " ");
             }
             Console.WriteLine();
             Console.WriteLine();
@@ -45,7 +45,7 @@ namespace CollectionsHandsOn
 
             //3. Creating a bool arr containing alternative true false
 
-            String [] trueFalseArr = new String[10];
+            String[] trueFalseArr = new String[10];
             for (int i = 0; i < trueFalseArr.Length; i++)
             {
                 if (i % 2 == 0)
@@ -61,7 +61,7 @@ namespace CollectionsHandsOn
 
             for (int i = 0; i < trueFalseArr.Length; i++)
             {
-                Console.Write(trueFalseArr[i]+" ");
+                Console.Write(trueFalseArr[i] + " ");
             }
 
             Console.WriteLine();
