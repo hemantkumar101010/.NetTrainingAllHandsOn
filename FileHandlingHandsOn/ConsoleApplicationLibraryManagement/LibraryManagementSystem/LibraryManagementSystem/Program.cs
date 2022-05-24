@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LibraryManagementSystem
 {
@@ -10,6 +11,7 @@ namespace LibraryManagementSystem
     {
         static void Main(string[] args)
         {
+            TOP0:
 
             Console.WriteLine("---------------WELCOME TO LIBRARY MANAGEMENT SYSTEM---------------");
             Console.WriteLine("Please log in into any of the following account:");
@@ -30,27 +32,39 @@ namespace LibraryManagementSystem
                     Console.WriteLine("a. Add a book in the library.");
                     Console.WriteLine("b. Show the current available books in the library.");
                     Console.WriteLine("c. Show current inventory details.");
+                    Console.WriteLine("d. Show all borrowers details");
                     char choice1 = Convert.ToChar(Console.ReadLine());
                     switch (choice1)
                     {
                         case 'a':
                             Console.WriteLine("");
                             librarian.AddBookToTheLibrary();
-                           
-                            break; 
+                            Console.WriteLine();
+                            goto TOP0;
+                           // break;
+                        
                         case 'b':
                             Console.WriteLine("");
                             librarian.ShowAvailableBooksInLibrary();
-                           
-                            break;
+
+                            goto TOP0;
                         case 'c':
                             Console.WriteLine("");
                             users.ShowInventoryDetails();
-                            
-                            break;                                                 
-                    }                    
+
+                            goto TOP0;
+                        case 'd':
+                            Console.WriteLine("");
+                            librarian.ShowBorrowerDetails();
+                            goto TOP0;
+
+
+                    }               
+                    
                      break;
                 case 2:
+                    TOP1:
+
                     Console.WriteLine("\t\t---------------WELCOME TO USER PORTAL---------------\t\t");
                     Console.WriteLine("");
                     Console.WriteLine("Please chooes one of the following action:");
@@ -62,11 +76,11 @@ namespace LibraryManagementSystem
                         case 'a':
                             Console.WriteLine("");
                             users.BorrowBook();
-                            
-                            break;
+
+                            goto TOP1;
                         case 'b':
                             librarian.ShowAvailableBooksInLibrary();
-                            break;
+                            goto TOP1;
                     }
                     break;
             }

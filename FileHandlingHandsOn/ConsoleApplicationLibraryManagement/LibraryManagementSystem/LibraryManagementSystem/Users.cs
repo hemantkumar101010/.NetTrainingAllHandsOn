@@ -25,7 +25,7 @@ namespace LibraryManagementSystem
             Console.WriteLine("Enter the book name you want to borrow.");
             bookName = Console.ReadLine();
 
-            librarian.StoreBorrowerDetails(userName, userId, bookName);
+            librarian.StoreBorrowerDetails(userId, userName, bookName);
             Console.WriteLine("Thanks for borrowing.");
             Console.WriteLine("You hava to pay 15 rs per day of a book");
 

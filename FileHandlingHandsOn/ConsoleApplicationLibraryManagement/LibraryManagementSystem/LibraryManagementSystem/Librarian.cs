@@ -44,16 +44,16 @@ namespace LibraryManagementSystem
 
         }
 
-        public void StoreBorrowerDetails(String borrowerName,int borrowerId,string bookName)
+        public void StoreBorrowerDetails(int borrowerId,string borrowerName,string bookName)
         {
             FileStream fileStreamObj = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\FileHandlingHandsOn\ConsoleApplicationLibraryManagement\LibraryManagementSystem\borrowerDetails.txt", FileMode.Append, FileAccess.Write);
             StreamWriter streamWriterObj = new StreamWriter(fileStreamObj);
 
-                streamWriterObj.Write(borrowerName + ",");
-
                 streamWriterObj.Write(borrowerId + ",");
 
-                streamWriterObj.Write(bookName);
+                streamWriterObj.Write(borrowerName + ",");
+
+                streamWriterObj.Write(bookName+",");
                  
                 issueDate=DateTime.Now.ToShortDateString();
                 streamWriterObj.WriteLine(issueDate);
@@ -65,6 +65,30 @@ namespace LibraryManagementSystem
                 //Here time to update the libraryin bookDetails.txt(Remaining books in library after giving to a user)
                 UpdateBooksDetailFile(bookName);
 
+        }
+
+        public void ShowBorrowerDetails()
+        {
+            FileStream fileStreamObj = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\FileHandlingHandsOn\ConsoleApplicationLibraryManagement\LibraryManagementSystem\borrowerDetails.txt", FileMode.Open, FileAccess.Read);
+            StreamReader streamReaderObj = new StreamReader(fileStreamObj);
+            Console.WriteLine("UserId\tUserName\tBookName\tIssueDate");
+            while (streamReaderObj.Peek() > 0)
+            {
+                string line = streamReaderObj.ReadLine();
+                string[] DataArr = line.Split(',');
+
+                for (int i = 0; i < DataArr.Length; i++)
+                {
+                    Console.Write(DataArr[i] + "\t");
+                    if (i == 1||i==2)
+                    {
+                        Console.Write("\t");
+                    }
+                }
+                Console.WriteLine("");
+            }
+            streamReaderObj.Close();
+            fileStreamObj.Close();
 
         }
 
