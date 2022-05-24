@@ -28,7 +28,10 @@ namespace CollectionsHandsOn
             Console.WriteLine();
             Console.WriteLine();
 
+
+
             //2.creating a nameArr
+
             string [] nameArr = { "Tim", "Martin", "Nikki", "Sara" };
             Console.WriteLine("Values of nameArr are:");
             for (int i = 0; i < nameArr.Length; i++)
@@ -37,6 +40,8 @@ namespace CollectionsHandsOn
             }
             Console.WriteLine();
             Console.WriteLine();
+
+
 
             //3. Creating a bool arr containing alternative true false
 
@@ -64,8 +69,8 @@ namespace CollectionsHandsOn
 
 
 
+            //4: Creating a list of different Icecream flavors
 
-            //Creating a list of different Icecream flavors
             List<string> list = new List<string>();
 
             Console.WriteLine("Enter no of items you want to store");
@@ -77,9 +82,10 @@ namespace CollectionsHandsOn
                 Console.WriteLine("Enter the flavor name.");
                 list.Add(Console.ReadLine());
             }
-            Console.WriteLine();
 
+            Console.WriteLine();
             Console.WriteLine("Size of the flavor list are:" + list.Count);
+
 
             //Removing item at index 2(3rd item in the list)
             list.RemoveAt(2);
