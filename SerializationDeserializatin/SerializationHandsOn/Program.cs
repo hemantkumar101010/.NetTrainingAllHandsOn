@@ -12,14 +12,20 @@ namespace SerializationHandsOn
     {
         static void Main(string[] args)
         {
+            
+             XmlFormatSerialization xmlFormatSerialization = new XmlFormatSerialization();
+             //xmlFormatSerialization.SerializeInXmlFormat();
+             //xmlFormatSerialization.DeSerializeFromXmlFormatToListEBill();
 
-         Serialization serialization = new Serialization();
-         serialization.Serialize();
+             JsonFormatSerialization jsonFormatSerialization = new JsonFormatSerialization();
+            //jsonFormatSerialization.SerializeInJsonFromat();
+            //jsonFormatSerialization.DeSerializeFromJsonFromatToListEBill();
 
-         Deserialize deserialize = new Deserialize();
-         deserialize.Deserialization();
+            Serialization serialization = new Serialization();
+            //serialization.Serialize();
 
-
+            Deserialize deserialize = new Deserialize();
+            deserialize.Deserialization();
         }
     }
 }
