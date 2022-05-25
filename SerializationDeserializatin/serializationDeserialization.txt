@@ -1,0 +1,17 @@
+Serialization:  is the process of converting an object into a sequence of bytes and Deserialization is the process of converting a previously serialized sequence of bytes into an object. It enables you to save the state of an object and reconstruct it as needed.
+
+Binary serialization
+Steps for serializing an object are as follows:
+
+1. Create a stream object.
+2. Create a BinaryFormatter Object.
+3. Call the BinaryFormatter.Serialize() method.
+
+
+Steps for deserializing an object are as follows:
+
+1. Create a stream object to read the serialized output.
+2. Create a BinaryFormatter object.
+3. Call the BinaryFormatter.Deserialize() method to deserialize the object, and cast it to the correct type.
+
+

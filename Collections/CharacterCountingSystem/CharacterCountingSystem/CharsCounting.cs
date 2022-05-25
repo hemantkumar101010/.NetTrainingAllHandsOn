@@ -20,16 +20,9 @@ namespace CharacterCountingSystem
             return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') ||
                     (c >= '0' && c <= '9');
         }
-
         //method return a collection of char-frequency pairs in a string
         public Dictionary<char,int> CountFrequencyOfEachString(string myString)
-        {
-            //string myString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan sem ut ligula scelerisque sollicitudin. Ut at sagittis augue. Praesent quis rhoncus justo. Aliquam erat volutpat. Donec sit amet suscipit metus, non lobortis massa. Vestibulum augue ex, dapibus ac suscipit vel, volutpat eget massa. Donec nec velit non ligula efficitur luctus.";
-              //{L o r e m  i p s u m  d o l o r s i t a m e t}
-            
-            //excluding all non-alphabetes from the string 
-            myString = String.Concat(Array.FindAll(myString.ToCharArray(), isAlphaNumeric));
-            
+        {                       
             char[] charactersInString = myString.ToCharArray();
 
             //create a dictionary to store character-frequency-pairs in the input string
@@ -37,27 +30,40 @@ namespace CharacterCountingSystem
             
             //var used for whether a character's frequency checked or not 
             string checkedCharacters = "-1";
+            
+
 
             for (int i = 0; i < charactersInString.Length; i++)
             {
-                //filter for already checked characters
-                if (!checkedCharacters.Contains(charactersInString[i]))
+                //filter for already checked characters and non alphabatical characters
+                if (!checkedCharacters.Contains(charactersInString[i]) )
                 {
-                    int counter = 1;
-                    for (int j = i + 1; j < charactersInString.Length; j++)
+                    if (isAlphaNumeric(charactersInString[i])) 
                     {
-                        //comparing one char to remaining chars and according that incrementing counter values
-                        if (charactersInString[i] == charactersInString[j])
-                            counter++;
-                    }
-                    //adding a char and total frequency in dectionay
-                    charCountPairs.Add(charactersInString[i], counter);
+                        int counter = 1;
+                        for (int j = i + 1; j < charactersInString.Length; j++)
+                        {
+                            //comparing one char to remaining chars and according that incrementing counter values
+                            if (charactersInString[i] == charactersInString[j])
+                                counter++;
+                        }
+                        //adding a char and total frequency in dectionay
+                        charCountPairs.Add(charactersInString[i], counter);
 
-                    //after counting frequency of a char putting that in a string var. for filter purpose
-                    checkedCharacters += charactersInString[i];
+                        //after counting frequency of a char putting that in a string var. for filter purpose
+                        checkedCharacters += charactersInString[i];
+                    }
                 }
             }
             return charCountPairs;
         }
     }
 }
+
+
+
+//string myString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan sem ut ligula scelerisque sollicitudin. Ut at sagittis augue. Praesent quis rhoncus justo. Aliquam erat volutpat. Donec sit amet suscipit metus, non lobortis massa. Vestibulum augue ex, dapibus ac suscipit vel, volutpat eget massa. Donec nec velit non ligula efficitur luctus.";
+//{L o r e m  i p s u m  d o l o r s i t a m e t}
+
+//excluding all non-alphabetes from the string 
+//myString = String.Concat(Array.FindAll(myString.ToCharArray(), isAlphaNumeric));

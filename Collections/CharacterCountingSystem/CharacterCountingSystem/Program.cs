@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,20 +10,32 @@ namespace CharacterCountingSystem
 {
     internal class Program
     {
+       static  ArrayList al = new ArrayList();
+       
         static void Main(string[] args)
         {
+            //reading string from the local file
+            FileStream fileStream = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\Collections\CharacterCountingSystem\string.txt", FileMode.Append, FileAccess.Write);
+            StreamWriter streamWriter = new StreamWriter(fileStream);
+
+            streamWriter.Close();
+            fileStream.Close();
+
+            // Read entire text file content in one string  
+            string myString = File.ReadAllText(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\Collections\CharacterCountingSystem\string.txt");
+            myString.ToLower();
+
+            //creating obj of charsCounting
             CharsCounting charsCounting = new CharsCounting();
-
-            Console.WriteLine("Enter a string.");
-            string myString = Console.ReadLine(); 
             
-            Dictionary<char, int> result= charsCounting.CountFrequencyOfEachString(myString.ToLower());
+            //assigning char-frequency pairs in Dictionary collection
+            Dictionary<char, int> result= charsCounting.CountFrequencyOfEachString(myString);
 
-           foreach(char c in result.Keys)
+            //printing all char-frequency pairs
+            foreach (char c in result.Keys)
             {
                 Console.WriteLine(c+": " + result[c]);
             }
-
         }
     }
 }
