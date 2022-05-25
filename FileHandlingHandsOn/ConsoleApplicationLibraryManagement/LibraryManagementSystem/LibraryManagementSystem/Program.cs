@@ -65,7 +65,7 @@ namespace LibraryManagementSystem
                 case 2:
                     TOP1:
 
-                    Console.WriteLine("\t\t---------------WELCOME TO USER PORTAL---------------\t\t");
+                    Console.WriteLine("\t---------------WELCOME TO USER PORTAL---------------\t");
                     Console.WriteLine("");
                     Console.WriteLine("Please chooes one of the following action:");
                     Console.WriteLine("a. Borrow a book from the library.");
