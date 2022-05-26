@@ -20,7 +20,7 @@ namespace EBillProject
             FileStream fileStreamObj = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\DllClassLibrary\EBillProject/CustomersInfo.txt", FileMode.Append, FileAccess.Write);
             StreamWriter streamWriterObj = new StreamWriter(fileStreamObj);
 
-            List<EBill> list = new List<EBill>();
+            //List<EBill> list = new List<EBill>();
 
             Console.WriteLine("Enter no. of EBill objects you want to store.");
             int totalCustomers = Convert.ToInt32(Console.ReadLine());
@@ -31,21 +31,21 @@ namespace EBillProject
                 EBill ebillObj = new EBill();
 
                 Console.WriteLine("Enter Customer Id");
-                ebillObj.CustomerId = Convert.ToInt32(Console.ReadLine());
-                streamWriterObj.Write(ebillObj.CustomerId + ",");
+                CustomerId = Convert.ToInt32(Console.ReadLine());
+                streamWriterObj.Write(CustomerId + ",");
 
                 Console.WriteLine("Enter Customer name");
-                ebillObj.CustomerName = (Console.ReadLine());
-                streamWriterObj.Write(ebillObj.CustomerName + ",");
+                CustomerName = (Console.ReadLine());
+                streamWriterObj.Write(CustomerName + ",");
 
                 Console.WriteLine("Enter No of units");
-                ebillObj.NoOfUnits = Convert.ToInt32(Console.ReadLine());
-                streamWriterObj.Write(ebillObj.NoOfUnits + ",");
+                NoOfUnits = Convert.ToInt32(Console.ReadLine());
+                streamWriterObj.Write(NoOfUnits + ",");
 
-                ebillObj.Total = 7 * ebillObj.NoOfUnits;
-                streamWriterObj.WriteLine(ebillObj.Total);
+                Total = 7 * NoOfUnits;
+                streamWriterObj.WriteLine(Total);
 
-                list.Add(ebillObj);
+                //list.Add(ebillObj);
             }
             streamWriterObj.Close();
             fileStreamObj.Close();
