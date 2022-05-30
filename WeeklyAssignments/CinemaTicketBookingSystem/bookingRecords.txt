@@ -1,0 +1,4 @@
+973,Kfg,Delhi,30-05-2022 21:34:48,Incative
+18,Transporter,Delhi,30-05-2022 21:35:03,Incative
+743,3ediots,Mumbai,30-05-2022 21:35:16,Active
+393,Anime,MP,30-05-2022 22:19:27,Incative

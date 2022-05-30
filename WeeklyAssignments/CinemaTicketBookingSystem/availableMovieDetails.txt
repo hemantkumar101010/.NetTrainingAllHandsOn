@@ -1,0 +1,5 @@
+Delhi,Kfg,10:00 AM,8:00 PM
+Mumbai,3ediots,10:AM,10:PM
+Delhi,Transporter,10:am,9:pm
+UP,Space,12:am,6:pm
+MP,Anime,10:am,8:pm
