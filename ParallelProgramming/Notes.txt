@@ -1,0 +1,38 @@
+Link : Parallel Programming
+https://www.csharpstar.com/parallel-programming-csharp/#:~:text=Summary-,What%20is%20Parallel%20Programming%3F,the%20sake%20of%20better%20performance
+https://zetcode.com/csharp/async-await/
+https://o7planning.org/10553/csharp-multithreading
+https://www.wikitechy.com/tutorials/csharp/csharp-multithreading
+
+
+What is Parallel Programming?
+Parallel programming is a programming technique wherein the execution flow of the application is broken up into pieces that will be done at the same 
+time (concurrently) by multiple cores, processors, or computers for the sake of better performance.
+
+>Synchronus execution
+>Asynchronus execution
+
+In Synchronus execution, the program runs all tasks in sequence.
+That means when each task is triggered then the program waits unit it finishes before starting the next one.
+
+In Asynchronus execution, the program doesn’t run all tasks in sequence.
+That means it fires the tasks concurrently, and then waits for their end
+
+(synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, 
+you can move on to another task before it finishes.)
+
+
+The advantages and disadvantages of both programming modes:
+In Synchronus mode, every task executes in sequence, so it’s easier to program. That’s the way we’ve been doing it for years.
+
+With asynchronous execution, you have few challenges:
+You must synchronize tasks. for e.g. you run a task that must be executed after the other three have finished. You will have to create a mechanism 
+to wait for all tasks to finish before launching the new task.
+You must address concurrency issues. If you have a shared resource, like a list that is written in one task and read in another, 
+make sure that it’s kept in a known state.
+There is no logical sequence anymore. The tasks can end at any time, and you don’t have control of which one finishes first.
+
+
+What is a Thread?
+A Thread is the smallest unit of code to which an operating system allocates CPU time.
+In multithreading, a single process has multiple threads of execution.If the system has multiple cpu’s then it can run in parallel.
