@@ -13,7 +13,7 @@ time (concurrently) by multiple cores, processors, or computers for the sake of 
 >Asynchronus execution
 
 In Synchronus execution, the program runs all tasks in sequence.
-That means when each task is triggered then the program waits unit it finishes before starting the next one.
+That means when each task is triggered then the program waits until it finishes before starting the next one.
 
 In Asynchronus execution, the program doesn’t run all tasks in sequence.
 That means it fires the tasks concurrently, and then waits for their end
@@ -36,3 +36,38 @@ There is no logical sequence anymore. The tasks can end at any time, and you don
 What is a Thread?
 A Thread is the smallest unit of code to which an operating system allocates CPU time.
 In multithreading, a single process has multiple threads of execution.If the system has multiple cpu’s then it can run in parallel.
+
+examples to understand it better.
+
+1.You have a program that checks dozen websites to get pricing information for a product.
+So in this case, if the program does everything in single thread:
+
+Then the main program is blocked until the web search finishes.
+The user interface is stuck and the user can’t do anything
+But if you run the web interface and search in different threads then the program can remain responsive even while the search is still running.
+
+
+2. Multithreading can also simplify your code. 
+for e.g. you have a program that periodically checks a collection of websites for news and stock
+prices. You can write a program that repeatedly loops through each of the site to check them one after another and that would be complicated.
+Another approach would be to assign separate thread to each website and let each thread run 
+independently.Now each thread will focus only on one website.
+
+
+
+Different methods for Multithreading:
+
+>Tasks
+The task class let you create and run threads.
+>Threads
+The Thread class gives you lower level access to threads.
+
+
+Methods in Thread Class :
+Methods	Purpose
+Abort         -      To Terminate/stop the Thread
+Join		  -		 It is called on the main thread to let it wait until the other thread finishes.
+ResetAbort	  -      Cancels an Abort for current thread
+Sleep	      -      Suspends Thread for specified amount of time
+Start	      -      Starts the Thread
+Yield	      -      Yields execution to another thread if one is ready to run

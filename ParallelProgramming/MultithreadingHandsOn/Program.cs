@@ -12,16 +12,19 @@ namespace MultithreadingHandsOn
         static void Main(string[] args)
         {
             TaskParallelExecutions taskParallelExecutions = new TaskParallelExecutions();
-            taskParallelExecutions.DisplayCars();
+
+
+            //taskParallelExecutions.DisplayCars();
 
             //creating threads
 
-            //Thread t1 = new Thread(taskParallelExecutions.ShowBuyerReport);
-            //Thread t2 = new Thread(taskParallelExecutions.ShowDealerReport);
+            Thread t1 = new Thread(taskParallelExecutions.ShowBuyerReport);
+            Thread t2 = new Thread(taskParallelExecutions.ShowDealerReport);
 
             //stating threads
-           // t1.Start();
-            //t2.Start(); 
+           t1.Start();
+           t2.Start();
+           Console.ReadKey();
             
         }
     }
