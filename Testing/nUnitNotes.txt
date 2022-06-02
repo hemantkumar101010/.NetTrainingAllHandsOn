@@ -1,0 +1,7 @@
+links: 01-06-2022
+https://zetcode.com/csharp/nunit/
+https://www.codemotion.com/magazine/dev-hub/backend-dev/testing-your-c-code-with-xunit/
+https://www.geeksforgeeks.org/what-is-reflection-in-c-sharp/
+
+02-06-2022
+https://www.c-sharpcorner.com/article/moq-mocking-framework-with-xunit-net-testing-fr/
