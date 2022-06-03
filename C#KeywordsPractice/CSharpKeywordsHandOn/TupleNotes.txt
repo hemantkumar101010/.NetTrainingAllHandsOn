@@ -1,0 +1,32 @@
+﻿Tuple:
+The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure.
+
+Define a tuple :
+To define a tuple type, you specify types of all its data members and, optionally, the field names.
+
+Note:
+1. You cannot define methods in a tuple type, but you can use the methods provided by .NET
+2. Tuple types are value types; tuple elements are public fields. That makes tuples mutable value types.
+3. You can define tuples with an arbitrary(not predefined) large number of elements.
+4. You can work with the returned tuple instance directly or deconstruct it in separate variables.
+4. You can explicitly specify the names of tuple fields either in a tuple initialization expression or in the definition of a tuple type
+
+Use cases of tuples:
+One of the most common use cases of tuples is as a method return type. That is, instead of defining out method parameters,
+you can group method results in a tuple return type
+
+C# supports assignment between tuple types that satisfy both of the following conditions:
+>both tuple types have the same number of elements
+>for each tuple position, the type of the right-hand tuple element is the same as or implicitly convertible to the type of the corresponding
+left-hand tuple element
+
+Tuple equality:
+tuple types support the == and != operators. These operators compare members of the left-hand operand with the corresponding members
+of the right-hand operand
+
+
+Two tuples are comparable when both of the following conditions are satisfied:
+
+Both tuples have the same number of elements. For example, t1 != t2 doesn't compile if t1 and t2 have different numbers of elements.
+For each tuple position, the corresponding elements from the left-hand and right-hand tuple operands are comparable with the == and != operators. 
+For example, (1, (2, 3)) == ((1, 2), 3) doesn't compile because 1 is not comparable with (1, 2).
