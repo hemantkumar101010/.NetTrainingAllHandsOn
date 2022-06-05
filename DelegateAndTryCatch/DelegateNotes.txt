@@ -1,0 +1,25 @@
+What is a delegate?
+
+It is a reference type.
+It is a function pointer or it holds a reference (pointer) to a function (method).
+It is type safe.
+Delegates are mainly used for the event handling and the callback methods.
+
+
+Delegate can be used to point to any function, which has a similar signature i.e., it can be used to point to any function, 
+which has void return type and one string parameter.
+
+There are two types of delegates, which are given below.
+
+Unicast deligate:
+This delegate refers to only one method.
+Multicast deligate:
+This delegate can refer to more than one method.
+
+Note:
+An instance of a delegate can refer to static as well as instance methods. 
+The signature of function declaration and the delegate declaration should match.
+
+
+link: https://www.c-sharpcorner.com/blogs/delegates-with-real-time-example-in-c-sharp
+Prebuild Deledgate: https://zetcode.com/csharp/func/
