@@ -1,0 +1,243 @@
+﻿link : 
+https://www.c-sharpcorner.com/article/operator-overloading-in-C-Sharp2/
+
+Tuple:https://docs.microsoft.com/en-us/dotnet/framework/app-domains/gac
+https://www.c-sharpcorner.com/article/tuples-in-c-sharp/
+The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure.
+
+Define a tuple :
+To define a tuple type, you specify types of all its data members and, optionally, the field names.
+
+Note:
+1. You cannot define methods in a tuple type, but you can use the methods provided by .NET
+2. Tuple types are value types; tuple elements are public fields. That makes tuples mutable value types.
+3. You can define tuples with an arbitrary(not predefined) large number of elements.
+4. You can work with the returned tuple instance directly or deconstruct it in separate variables.
+4. You can explicitly specify the names of tuple fields either in a tuple initialization expression or in the definition of a tuple type
+
+Use cases of tuples:
+One of the most common use cases of tuples is as a method return type. That is, instead of defining out method parameters,
+you can group method results in a tuple return type
+
+C# supports assignment between tuple types that satisfy both of the following conditions:
+>both tuple types have the same number of elements
+>for each tuple position, the type of the right-hand tuple element is the same as or implicitly convertible to the type of the corresponding
+left-hand tuple element
+
+Tuple equality:
+tuple types support the == and != operators. These operators compare members of the left-hand operand with the corresponding members
+of the right-hand operand
+
+
+Two tuples are comparable when both of the following conditions are satisfied:
+
+Both tuples have the same number of elements. For example, t1 != t2 doesn't compile if t1 and t2 have different numbers of elements.
+For each tuple position, the corresponding elements from the left-hand and right-hand tuple operands are comparable with the == and != operators. 
+For example, (1, (2, 3)) == ((1, 2), 3) doesn't compile because 1 is not comparable with (1, 2).
+
+
+
+
+
+
+Jagged Array:https://www.c-sharpcorner.com/UploadFile/puranindia/jagged-arrays-in-C-Sharp-net/#:~:text=A%20jagged%20array%20in%20C%23,array%20is%20introduced%20in%20C%23
+A jagged array in C# is an array whose elements are arrays. 
+
+>The elements of a jagged array can be of different dimensions and sizes. 
+>A jagged array is sometimes called an "array of arrays." A special type of array is introduced in C#. 
+>A Jagged Array is an array of an array in which the length of each array index can differ.
+
+Jagged array real life example:
+You can consider jagged array as a movie ticket counter where ticket selling counters are fixed (rows are fixed) 
+but you don't know how many people will be standing in each counter in a queue (column numbers are not fixed can vary on different rows).
+ 
+>A jagged array is an array of arrays, and therefore its elements are reference types and are initialized to null.
+
+
+
+
+
+Structs:https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct
+A structure type (or struct type) is a value type that can encapsulate data and related functionality. 
+You use the struct keyword to define a structure type.
+
+>Structs are value types and do not require heap allocation.
+>A variable of a struct type directly contains the data of the struct, whereas a variable of a class type contains a reference to the data, 
+the latter known as an object.
+
+Note: Structs are particularly useful for small data structures that have value semantics
+(Value semantic means that you access a copy,while reference semantic means that you access the actual thing). 
+Complex numbers, points in a coordinate system,or key-value pairs in a dictionary are all good examples of structs. 
+Key to these data structures is that they have few data members, that they do not require use of inheritance or reference semantics, 
+rather they can be conveniently implemented using value semantics where assignment copies the value instead of the reference. end note!
+
+
+
+
+
+
+
+Lambda Expression:
+You use a lambda expression to create an anonymous function. 
+>Use the lambda declaration operator => to separate the lambda's parameter list from its body.
+
+A lambda expression can be of any of the following two forms:
+>Expression lambda that has an expression as its body: (input-parameters) => expression
+>Statement lambda that has a statement block as its body: (input-parameters) => { <sequence-of-statements> }
+
+Note:
+>Delegate is an object that hold a reference to a function. Several different delegates may point to the same function. 
+A delegate's type defines the footprint of a function it may point to.
+>Lambda expression is a function that doesn't have name. The only way to execute this function is to have a delegate pointing to the function. 
+>Lambda expressions are usually defined in place where you need a delegate to a function with a given footprint. 
+This is useful to make code less verbose and at the same time more descriptive and flexible
+
+
+
+
+
+Method Parameter: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/method-parameters
+
+>Parameters declared for a method without in, ref or out, are passed to the called method by value.
+>That value can be changed in the method, but the changed value will not be retained when control passes back to the calling procedure.
+>By using a method parameter keyword, you can change this behavior.
+
+The keywords you can use when declaring method parameters:
+>params specifies that this parameter may take a variable number of arguments.
+>in specifies that this parameter is passed by reference but is only read by the called method.
+>ref specifies that this parameter is passed by reference and may be read or written by the called method.
+>out specifies that this parameter is passed by reference and is written by the called method.
+
+Param:
+>By using the params keyword, you can specify a method parameter that takes a variable number of arguments. The parameter type must be a 
+single-dimensional array.
+>No additional parameters are permitted after the params keyword in a method declaration, and only one params keyword is permitted in a 
+method declaration.
+>If the declared type of the params parameter is not a single-dimensional array, compiler error CS0225 occurs.
+
+in:
+The in keyword causes arguments to be passed by reference but ensures the argument is not modified. 
+It makes the formal parameter an alias for the argument, which must be a variable. In other words, any operation on the parameter 
+is made on the argument. It is like the ref or out keywords, except that in arguments cannot be modified by the called method. 
+Whereas ref arguments may be modified, out arguments must be modified by the called method, and those modifications are observable 
+in the calling context.
+
+ref:
+The ref keyword indicates that a value is passed by reference.
+Passing an argument by reference:
+When used in a method's parameter list, the ref keyword indicates that an argument is passed by reference, not by value. 
+The ref keyword makes the formal parameter an alias for the argument, which must be a variable. 
+In other words, any operation on the parameter is made on the argument.
+
+Note...
+>An argument that is passed to a ref or in parameter must be initialized before it is passed. This requirement differs from out parameters,
+whose arguments don't have to be explicitly initialized before they are passed.
+>Members of a class can't have signatures that differ only by ref, in, or out. A compiler error occurs if the only difference between two members 
+of a type is that one of them has a ref parameter and the other has an out, or in parameter.
+>However, methods can be overloaded when one method has a ref, in, or out parameter and the other has a parameter that is passed by value.
+>Properties are not variables. They're methods, and cannot be passed to ref parameters.
+>You can't use the ref, in, and out keywords for the following kinds of methods:
+
+-Async methods, which you define by using the async modifier.
+-Iterator methods, which include a yield return or yield break statement.
+
+>>You can also use the ref keyword to pass reference types by reference. Passing a reference type by reference enables the called method 
+to replace the object to which the reference parameter refers in the caller. The storage location of the object is passed to the method 
+as the value of the reference parameter. If you change the value in the storage location of the parameter (to point to a new object), 
+you also change the storage location to which the caller refers
+
+
+out:
+The out keyword causes arguments to be passed by reference. 
+It makes the formal parameter an alias for the argument, which must be a variable. 
+In other words, any operation on the parameter is made on the argument. It is like the ref keyword, except that ref requires that the 
+variable be initialized before it is passed. 
+It is also like the in keyword, except that in does not allow the called method to modify the argument value. 
+To use an out parameter, both the method definition and the calling method must explicitly use the out keyword.
+
+note...
+>>The in, ref, and out keywords are not considered part of the method signature for the purpose of overload resolution. Therefore, 
+methods cannot be overloaded if the only difference is that one method takes a ref or in argument and the other takes an out argument.
+
+
+
+
+
+
+Nullable Types: https://www.tutorialsteacher.com/csharp/csharp-nullable-types
+
+A value type cannot be assigned a null value. For example, int i = null will give you a compile time error.
+
+>C# 2.0 introduced nullable types that allow you to assign null to value type variables. 
+>You can declare nullable types using Nullable<t> where T is a type.
+
+Example: Nullable type
+Nullable<int> i = null;
+
+>A nullable of type int is the same as an ordinary int plus a flag that says whether the int has a value or not (is null or not). 
+>All the rest is compiler magic that treats "null" as a valid value.
+
+Note...
+>>You typically use a nullable value type when you need to represent the undefined value of an underlying value type. 
+For example, a Boolean, or bool, variable can only be either true or false. However, in some applications a variable value can 
+be undefined or missing. For example, a database field may contain true or false, or it may contain no value at all, that is, NULL. 
+You can use the bool? type in that scenario.
+
+
+
+
+
+
+Checked and unchecked:
+C# provides checked and unchecked keyword to handle integral type exceptions. 
+Checked and unchecked keywords specify checked context and unchecked context respectively. 
+In checked context, arithmetic overflow raises an exception whereas, in an unchecked context, arithmetic overflow is ignored and 
+result is truncated.
+
+>>The checked keyword is used to explicitly check overflow and conversion of integral type values at compile time.
+>>The Unchecked keyword ignores the integral type arithmetic exceptions. It does not check explicitly and produce result that may be truncated or wrong.
+
+
+
+
+
+
+
+Nested classes:
+A class is a user-defined blueprint or prototype from which objects are created. 
+Basically, a class combines the fields and methods (member function which defines actions) into a single unit. 
+In C#, a user is allowed to define a class within another class. Such types of classes are known as nested class. 
+This feature enables the user to logically group classes that are only used in one place, thus this increases the use of encapsulation, 
+and create more readable and maintainable code.
+
+Important points: 
+
+>A nested class can be declared as a private, public, protected, internal, protected internal, or private protected.
+>Outer class is not allowed to access inner class members directly.
+>You are allowed to create objects of inner class in outer class.
+>Inner class can access static member declared in outer class .
+
+>>The scope of a nested class is bounded by the scope of its enclosing class.
+>>By default, the nested class is private.
+>>In C#, a user is allowed to inherit a class (including nested class) into another class. 
+
+
+
+
+
+const:
+In C#, a const keyword is used to declare constant fields and constant local. 
+The value of the constant field is the same throughout the program or in other words, 
+once the constant field is assigned the value of this field is not be changed. 
+In C#, constant fields and locals are not variables, a constant is a number, string, null reference, boolean values.
+
+
+Difference between readonly and const keyword in C#:
+
+ReadOnly Keyword																	       Const Keyword
+In C#, readonly fields can be created using readonly keyword							   In C#, constant fields are created using const keyword.
+ReadOnly is a runtime constant.															   Const is a compile time constant.
+The value of readonly field can be changed.												   The value of the const field can not be changed.
+It cannot be declared inside the method.												   It can be declared inside the method.
+In readonly fields, we can assign values in declaration and in the constructor part.	   In const fields, we can only assign values in declaration part.
+It can be used with static modifiers.													   It cannot be used with static modifiers.
