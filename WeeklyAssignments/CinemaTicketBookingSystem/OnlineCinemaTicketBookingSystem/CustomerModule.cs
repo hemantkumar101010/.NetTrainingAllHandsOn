@@ -66,12 +66,9 @@ namespace OnlineCinemaTicketBookingSystem
             
             SearchMovie(movieName, CityName);
 
-           // string lastLine = File.ReadLines(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\WeeklyAssignments\CinemaTicketBookingSystem\bookingRecords.txt").Last();
-
             FileStream fileStream = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\WeeklyAssignments\CinemaTicketBookingSystem\bookingRecords.txt", FileMode.Append, FileAccess.Write);
             StreamWriter streamWriter = new StreamWriter(fileStream);
-
-
+  
             Random r = new Random();
             int lastBookingId;
             lastBookingId= r.Next(0, 1000);
@@ -103,6 +100,7 @@ namespace OnlineCinemaTicketBookingSystem
             StreamWriter streamWriter = new StreamWriter(fileStream1);
 
             string status = "Incative";
+
             while (streamreader.Peek() > 0)
             {
                 string line = streamreader.ReadLine();
@@ -115,7 +113,7 @@ namespace OnlineCinemaTicketBookingSystem
                         if (i == 4) 
                         {
                             streamWriter.WriteLine(status);
-                            Console.WriteLine("Your ticket calcelled succesfully for Booking id" + bookingId);
+                            Console.WriteLine("Your ticket calcelled succesfully for Booking id " + bookingId);
                             break;
                         }                            
                         streamWriter.Write(arr[i]+",");                                    
@@ -143,7 +141,6 @@ namespace OnlineCinemaTicketBookingSystem
 
             File.Delete(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\WeeklyAssignments\CinemaTicketBookingSystem\bookingRecords.txt");
             File.Move(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\WeeklyAssignments\CinemaTicketBookingSystem\bookingRecords1.txt", @"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\WeeklyAssignments\CinemaTicketBookingSystem\bookingRecords.txt");
-
 
         }
 

@@ -1,4 +1,7 @@
-973,Kfg,Delhi,30-05-2022 21:34:48,Incative
-18,Transporter,Delhi,30-05-2022 21:35:03,Incative
-743,3ediots,Mumbai,30-05-2022 21:35:16,Active
-393,Anime,MP,30-05-2022 22:19:27,Incative
+952,3ediots,Mumbai,31-05-2022 10:25:50,Active
+944,Kfg,Delhi,31-05-2022 10:25:57,Active
+351,Anime,MP,31-05-2022 10:26:25,Incative
+956,Space,UP,31-05-2022 10:26:55,Active
+
+synchronous: sequencial process
+asynchronous: non sequencial

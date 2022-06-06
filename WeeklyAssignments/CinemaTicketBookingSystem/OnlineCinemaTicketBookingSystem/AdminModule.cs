@@ -17,6 +17,7 @@ namespace OnlineCinemaTicketBookingSystem
             int counter = 1, currentAvailableMovies;
             Console.WriteLine("Enter total number Of movie you want to add in the the online portal");
             currentAvailableMovies = Convert.ToInt32(Console.ReadLine());
+
             //streamWriterObj.WriteLine("BookId\tBookName\tBookWriter");
 
             while (counter <= currentAvailableMovies)
@@ -62,7 +63,6 @@ namespace OnlineCinemaTicketBookingSystem
                 }
                 Console.WriteLine();
             }
-
         }
     }
 }
