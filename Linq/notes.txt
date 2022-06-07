@@ -1,0 +1,141 @@
+Links:
+https://www.dotnetcurry.com/linq/750/deferred-vs-immediate-query-execution-linq
+https://dotnettutorials.net/lesson/introduction-to-linq/
+https://dotnettutorials.net/lesson/single-and-singleordefault-methods-in-linq/
+https://dotnettutorials.net/lesson/first-and-firstordefault-methods-in-linq/
+https://dotnettutorials.net/lesson/groupby-in-linq/
+https://dotnettutorials.net/lesson/linq-joins-in-csharp/
+
+Linq:
+Manupulate data from diff. data sources such as db., XML files, or with a simple list of in-memory data.
+
+The term LINQ stands for Language Integrated Query and it is pronounced as LINK.
+The LINQ (Language Integrated Query) is a part of a language but not a complete language. It was introduced by Microsoft with .NET Framework 3.5 
+and C# 3.0 and is available in System.Linq namespace.
+
+>>LINQ provides us common query syntax which allows us to query the data from various data sources. 
+That means using a single query we can get or set the data from various data sources such as SQL Server database, XML documents, ADO.NET Datasets, 
+and any other in-memory objects such as Collections, Generics, etc.
+
+Why should we learn LINQ?
+LINQ provides a uniform programming model (i.e. common query syntax) which allows us to work with different data sources but using a 
+standard or you can say unified coding style. As a result, we don’t require to learn different syntaxes to query different data sources.
+
+What are LINQ Providers?
+The LINQ provider is a software component that lies between the LINQ queries and the actual data source. The Linq provider will convert the 
+LINQ queries into a format that can be understood by the underlying data source. For example, LINQ to SQL provider will convert the LINQ queries to 
+SQL statements which can be understood by the SQL Server database. 
+Similarly, the LINQ to XML provider will convert the queries into a format that can be understood by the XML document.
+
+Advantages of using LINQ?
+We don’t need to learn new query language syntaxes for different data sources as it provides common query syntax to query different data sources.
+Less code as compared to the traditional approach. That means using LINQ we can minimize our code.
+It provides Compile time error checking as well as intelligence support in Visual Studio. This powerful feature helps us to avoid run-time errors.
+LINQ provides a lot of inbuilt methods that we can use to perform different operations such as filtering, ordering, grouping, etc. which makes our work easy.
+Its query can be reused.
+
+The disadvantages of using LINQ are as follows:
+
+Using LINQ it’s very difficult to write complex queries like SQL.
+LINQ doesn’t take the full advantage of SQL features like cached execution plan for the stored procedure.
+We will get the worst performance if we don’t write the queries properly.
+If we do some changes to our queries, then we need to recompile the application and need to redeploy the dll to the server.
+
+
+Deferred vs Immediate Query Execution in LINQ:
+In Deferred the execution of the query was deferred until the query variable was iterated over in a foreach loop.
+
+>>Deferred execution is important as it gives you the flexibility of constructing a query in several steps by separating query construction 
+from query execution.
+>>This allows you to execute a query as frequently as you want to, like fetching the latest information from a database that is being updated
+frequently by other applications. You will always get the latest information from the database in this case.
+
+Immediate Query Execution:
+You can also force a query to execute immediately, which is useful for caching query results.
+
+>>The basic difference between a Deferred execution vs Immediate execution is that Deferred execution of queries produce a sequence of values,
+whereas Immediate execution of queries return a singleton value and is executed immediately. Examples are using Count(), Average(), Max() etc.
+
+Note: To force immediate execution of a query that does not produce a singleton value, you can call the ToList(), ToDictionary() or 
+the ToArray() method on a query or query variable. These are called conversion operators which allow you to make a copy/snapshot of the result 
+and access is as many times you want, without the need to re-execute the query.
+
+
+
+
+
+Single and SingleOrDefault Methods in Linq:
+
+Single Method in Linq: 
+The Linq Single Method is used to returns a single element from a data source or you can say from a sequence. 
+>There are two overloaded versions available for this Linq Single Method.
+
+>>The first overloaded version of the Single method does not take any parameter. This method simply returns the only element from a sequence. 
+If the data source is empty or if the data source contains more than one element, then it throws an exception.
+
+>> The second overloaded version of the Single method takes one predicate as a parameter and using this predicate you can specify a condition. 
+This method returns the only element from the sequence which satisfied the given condition. In this case, the method will throw an exception 
+when any of the following condition is true.
+
+-If the data source is empty.
+-When the given condition does not satisfy any element in the sequence.
+-If the given condition satisfies more than one element.
+
+note...
+>>Note: If your sequence contains more than one element and you need to fetch a single element based on some condition then you need to use the 
+other overloaded versions of the Single method which takes one predicate as a parameter.
+
+>>Note: If you don’t want to throw an exception when the sequence is empty or if the specified condition does not return an element from a 
+sequence then you need to use the Linq SingleOrDefault method.
+
+
+SingleOrDefault Method in Linq: 
+The Linq SingleOrDefault method is very much similar to the Linq Single method except that this method will not throw an exception when 
+the sequence is empty or when no element in the sequence satisfied the given condition.
+
+note...
+Note: The most important point that you need to keep in mind is, like the Single method, the SingleOrDefault method still throws an 
+exception when the sequence contains more than one matching element for the given condition.
+
+
+What is the difference between Single and SingleOrDefault methods in Linq?
+>>>Both Single and SingleOrDefault methods in Linq are used to returns a single element from a sequence. 
+But if the sequence is empty or if no element is satisfied with the given condition, then the Single method will throw an exception while 
+the SingleOrDefault method will not throw an exception instead it returns a default value.
+
+
+
+First and FirstOrDefault Methods in Linq:
+First Method in Linq: 
+The Linq First Method is used to return the first element from a data source. If the data source is empty, then this method will throw an exception.
+
+There are two overloaded versions available for this method:
+
+>>The first overloaded version does not take any parameter and it simply returns the first element from the data source.
+Whenever the data source is empty or if the specified condition does not return any data, then we will get the InvalidOperationException.
+>>The second overloaded version takes a predicate as a parameter using which we can specify a condition and then it will 
+return the first element which satisfied the specified condition.
+
+
+
+FirstOrDefault Method in Linq:
+>>The Linq FirstOrDefault method exactly does the same thing as the First method except that this method does not 
+throw Invalid Operation Exception instead it returns the default value based on the data type of the element. 
+Like the First method, there are also two overloaded versions available for the FirstOrDefault method .
+with parameter and without parameters.
+
+
+
+What is the difference between First and FirstOrDefault Methods in Linq?
+>>>Both First and FirstOrDefault methods in Linq are used to return the first element from a data source. 
+But if the data source is empty or if the specified condition does not return any data, then the First method will throw an 
+exception while the FirstOrDefault method will not throw an exception instead it returns a default value based on the data type of the element.
+
+
+
+What is Linq GroupBy Method in C#?
+The Linq GroupBy in C# belongs to the Grouping Operators category and exactly does the same thing as the Group By clause does in SQL Query. 
+This method takes a flat sequence of elements and then organizes the elements into groups (i.e. IGrouping<TKey, TSource>) based on a given key.
+
+>>If you go the definition of GroupBy method then you will see that it return an IEnumerable<IGrouping<TKey, TSource>> where TKey is nothing 
+but the Key value on which the grouping has been formed and TSource is the collection of elements that matches the grouping key value. 
