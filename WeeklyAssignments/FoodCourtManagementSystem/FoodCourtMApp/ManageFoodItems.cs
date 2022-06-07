@@ -8,7 +8,7 @@ namespace FoodCourtMApp
 {
     public class ManageFoodItems
     {
-        public static Dictionary<int, string> foodItemList = new Dictionary<int, string>();
+        public static Dictionary<int,(string,int,string)> foodItemList = new Dictionary<int,(string,int,string)> ();
         public static Dictionary<int, int> foodItemCostList = new Dictionary< int, int>();    
         public static void AddNewFoodItem()
         {
@@ -21,8 +21,14 @@ namespace FoodCourtMApp
                 Console.WriteLine("Enter food Id");
                 int foodItemId= Convert.ToInt32(Console.ReadLine());
                 
-                System.Console.WriteLine("Enter new food item name");
+                System.Console.WriteLine("Enter new food item name ");
                 string foodItemName = Console.ReadLine();
+
+                System.Console.WriteLine("Enter  food category name ");
+                string categoryName = Console.ReadLine();
+
+                Console.WriteLine("Enter category Id");
+                int foodCategoryId = Convert.ToInt32(Console.ReadLine());
 
                 System.Console.WriteLine("Enter new food item Cost per item");
                 int foodItemCost = Convert.ToInt32(Console.ReadLine());
@@ -35,8 +41,8 @@ namespace FoodCourtMApp
                 }
                 else
                 {
-                    //adding food new item name
-                    foodItemList.Add(foodItemId, foodItemName);
+                    //adding food new item
+                    foodItemList.Add(foodItemId, (foodItemName,foodCategoryId,categoryName));
                     Console.WriteLine($"{foodItemName} successfully added in your food items list.");
                 }
                 //storing food items cost 
@@ -46,31 +52,36 @@ namespace FoodCourtMApp
             }
         }
 
-        public static void ShowDetailsOfFoodItem(string itemsName)
+        public static void ShowDetailsOfFoodItem(string itemName)
         {
-            if (foodItemList.ContainsValue(itemsName))
+           foreach(var foodItem in foodItemList)
             {
-                //Console.WriteLine("rahul");
-                Console.WriteLine($"Details of {itemsName} food items");
+                if (foodItem.Value.Item1.Equals(itemName))
+                {
+                    //Console.WriteLine("rahul");
+                    Console.WriteLine($"Details of {foodItem.Value.Item1} food item.");
 
-                int id = foodItemList.FirstOrDefault(x => x.Value == itemsName).Key;
+                    Console.WriteLine($"Item id: {foodItem.Key}");
+                    Console.WriteLine($"Food category id: {foodItem.Value.Item2}");
+                    Console.WriteLine($"Food Name: {foodItem.Value.Item1}");
+                    Console.WriteLine($"Item Cost: ${foodItemCostList[foodItem.Key]}/item");
+                    Console.WriteLine();
+                }
 
-                Console.WriteLine($"Item id: {id}");
-                Console.WriteLine($"Food Name: {itemsName}");
-                Console.WriteLine($"Item Cost: ${foodItemCostList[id]}/item");
-                Console.WriteLine();
             }
+            
+            
         }
 
         public static void ShowDetailsOfAllItems()
         {
             Console.WriteLine($"All available food items:");
             Console.WriteLine();
-            Console.WriteLine("ItemId\tItemName\tItemCost");
+            Console.WriteLine("ItemId\tItemName\tCategoryId\tCategoryName\tItemCost");
             foreach (var item in foodItemList)
             {
                 int id = item.Key;
-                Console.WriteLine($"{id}\t{item.Value}\t{foodItemCostList[id]}");                            
+                Console.WriteLine($"{id}\t{item.Value.Item1}\t{item.Value.Item2}\t{item.Value.Item3}\t{foodItemCostList[id]}");                            
             }
             Console.WriteLine();
         }
@@ -78,9 +89,10 @@ namespace FoodCourtMApp
         //edit food items
         public static void UpdateFooditem(string itemName)
         {
-            //getting id of the food item
+            
             Console.WriteLine();
-            int id = foodItemList.FirstOrDefault(x => x.Value == itemName).Key;
+            //getting id of the food item having item name
+            int id = foodItemList.FirstOrDefault(x => x.Value.Equals(itemName)).Key;
 
             int val;
             if (foodItemCostList.TryGetValue(id, out val))
@@ -89,13 +101,8 @@ namespace FoodCourtMApp
                 int newCost =Convert.ToInt32(Console.ReadLine());
                 foodItemCostList[id] =  newCost;
                 Console.WriteLine($"{itemName} get updated from ${val}/item to ${newCost}/item successfully.");
-            }
-            
+            }           
             Console.WriteLine();
         }
-
     }
-
-
-
 }

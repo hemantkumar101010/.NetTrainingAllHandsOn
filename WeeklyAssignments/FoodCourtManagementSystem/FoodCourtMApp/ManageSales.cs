@@ -8,6 +8,7 @@ namespace FoodCourtMApp
 {
     public class ManageSales 
     {
+        //taking values in tuples type
         public static Dictionary<int, (string, string, DateTime,int)> salesList = new Dictionary<int, (string,string, DateTime,int)>();
 
         public static void AddASale()
@@ -24,7 +25,8 @@ namespace FoodCourtMApp
 
             int quantity =Convert.ToInt32(Console.ReadLine());
 
-            int id = ManageFoodItems.foodItemList.FirstOrDefault(x => x.Value == itemName).Key;
+            //getting item id number by item Name
+            int id = ManageFoodItems.foodItemList.FirstOrDefault(x => x.Value.Item1 == itemName).Key;
             int rate = ManageFoodItems.foodItemCostList[id];
 
             salesList.Add(salesId,(cusName,itemName,datetime,quantity*rate));
@@ -43,6 +45,12 @@ namespace FoodCourtMApp
             {
                 Console.WriteLine(item.Value);
             }
+        }
+
+        public static void EditSales(int salesID)
+        {
+            salesList.Remove(salesID);
+            Console.WriteLine($"{salesID} successfully removed from the sales portal");
         }
 
     }

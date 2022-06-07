@@ -18,22 +18,25 @@ namespace FoodCourtMApp
      */
             //1 denote north indian, 2 denote south indian,3 denote chinese food in dictionary value parameter
 
-            ManageFoodItems.foodItemList.Add(1, "Veg Sandwich0");
+            ManageFoodItems.foodItemList.Add(1, ("Veg Sandwich",100, "Chinese food"));
             ManageFoodItems.foodItemCostList.Add(1, 99);
-            ManageFoodItems.foodItemList.Add(2, "French fries2");
+            ManageFoodItems.foodItemList.Add(2, ("French fries",100, "Chinese food"));
             ManageFoodItems.foodItemCostList.Add(2, 199);
-            ManageFoodItems.foodItemList.Add(3, "veg Alo Toast1");
+            ManageFoodItems.foodItemList.Add(3, ("veg Alo Toast",101, "North indian"));
             ManageFoodItems.foodItemCostList.Add(3, 75);
-            ManageFoodItems.foodItemList.Add(4, "Veg rice1");
+            ManageFoodItems.foodItemList.Add(4, ("Veg rice",102, "South indian"));
             ManageFoodItems.foodItemCostList.Add(4, 300);
-            ManageFoodItems.foodItemList.Add(5, "Non-veg rice1");
+            ManageFoodItems.foodItemList.Add(5, ("Dosa",102, "South indian"));
             ManageFoodItems.foodItemCostList.Add(5, 200);
 
-            ManageFoodCategory.foodCategoryList.Add(0, "South indian dishes");
-            ManageFoodCategory.foodCategoryList.Add(1, "North indian dishes");
-            ManageFoodCategory.foodCategoryList.Add(2, "Chinese food dishes");
+            ManageFoodCategory.foodCategoryList.Add(100, ("South indian", "Non-veg"));
+            ManageFoodCategory.foodCategoryList.Add(101,("North indian","veg") );
+            ManageFoodCategory.foodCategoryList.Add(102,("Chinese food","Non-veg"));
 
-            ManageSales.salesList.Add(1, ("Hemant", "French fries2", DateTime.Now, 2));
+            int id = ManageFoodItems.foodItemList.FirstOrDefault(x => x.Value.Item1== "French fries").Key;
+            int rate = ManageFoodItems.foodItemCostList[id];
+
+            ManageSales.salesList.Add(1, ("Hemant", "French fries", DateTime.Now, 2*rate));
 
         TOP0:
             Console.WriteLine("---------------WELCOME TO FOOD COURT MANAGEMENT APP MENU---------------");
@@ -109,6 +112,8 @@ namespace FoodCourtMApp
                                     //show a particular item detail function
                                     Console.WriteLine("Enter name of the food item");
                                     string itemName = Console.ReadLine();
+                                   // Console.WriteLine("Enter food category id");
+                                   // int foodCategoryId = Convert.ToInt32(Console.ReadLine());
                                     ManageFoodItems.ShowDetailsOfFoodItem(itemName);
 
                                     Console.WriteLine("Press 1 to go previous portal");
@@ -215,6 +220,26 @@ namespace FoodCourtMApp
                                    
 
                                 }
+                            case 3:
+                                {
+                                    Console.WriteLine("Enter food category Id which you want to edit(id starts from 100 and above).");
+                                    int fc =Convert.ToInt32(Console.ReadLine());
+                                    ManageFoodCategory.EditExistingFoodCategory(fc);
+                                    Console.WriteLine("Press 1 to go previous portal");
+                                    Console.WriteLine("Press 0 to go stating portal");
+                                    int i = Convert.ToInt32(Console.ReadLine());
+                                    if (i == 1)
+                                        goto TOP2;
+                                    else if (i == 0)
+                                        goto TOP0;
+                                    else
+                                    {
+                                        Console.WriteLine("Enter a valid number.");
+                                        break;
+                                    }
+
+
+                                }
                             case 4:
                                 {
                                     ManageFoodCategory.ShowAllFoodCategory();
@@ -269,6 +294,26 @@ namespace FoodCourtMApp
                                         break;
 
                                     }          
+
+                                }
+                            case 2:
+                                {
+                                    Console.WriteLine("Enter salesId to edit/remove (id starts from 1 )");
+                                    int id1 = Convert.ToInt32(Console.ReadLine());
+                                    ManageSales.EditSales(id1);
+                                    Console.WriteLine("Press 1 to go previous portal");
+                                    Console.WriteLine("Press 0 to go stating portal");
+                                    int i = Convert.ToInt32(Console.ReadLine());
+                                    if (i == 1)
+                                        goto TOP3;
+                                    else if (i == 0)
+                                        goto TOP0;
+                                    else
+                                    {
+                                        Console.WriteLine("Enter a valid number.");
+                                        break;
+
+                                    }
 
                                 }
                             case 3:
