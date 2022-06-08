@@ -126,25 +126,7 @@ namespace LinqQueryProgrammingQuestions
 
             Console.WriteLine($"The city starting with {startWith} and ending with {endsWith} is :{resCity}");
         }
-/*5.	Write a program in C# Sharp to display the top n-th records.
-
-Input :
-The members of the list are :
-5
-7
-13
-24
-6
-9
-8
-7
-How many records you want to display ? : 3
-Expected Output :
-The top 3 records from the list are :
-24
-13
-9
- */
+/*5.	Write a program in C# Sharp to display the top n-th records.*/
         public static void DisplayTopNRecords()
         {
             int[] records = { 5, 7, 13, 24, 6, 9, 8, 7 };

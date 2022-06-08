@@ -19,8 +19,6 @@ namespace LinqQueryProgrammingQuestions
             //LinqQueryPrograms.LinqStatementMethod();
             //LinqQueryPrograms.FindWordsStartsWithL();
             LinqQueryPrograms.Multiple4Or6Method();
-
-
         }
     }
 }
