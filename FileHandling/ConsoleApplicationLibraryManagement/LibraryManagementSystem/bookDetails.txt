@@ -1,0 +1,12 @@
+4908,Java,James,7
+6799,Python,Mike,6
+8939,ReactJs,John,17
+9448,.Net,Micle,5
+3122,DsAlgo,Devid,0
+1784,HTML,James,3
+4908,Java,James,7
+6799,Python,Mike,6
+8939,ReactJs,John,17
+9448,.Net,Micle,5
+3122,DsAlgo,Devid,0
+1784,HTML,James,3
