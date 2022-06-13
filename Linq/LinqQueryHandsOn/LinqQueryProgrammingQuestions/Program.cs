@@ -10,14 +10,14 @@ namespace LinqQueryProgrammingQuestions
     {
         static void Main(string[] args)
         {
-            //LinqQueryPrograms.PositiveNoLinqMethod();
-            //LinqQueryPrograms.DisplayNumNFrequency();
-            //LinqQueryPrograms.CharNFrequencyMethod("apple is my favrate fruit");
-            //LinqQueryPrograms.StartsEndsWithCharMethod();
-            // LinqQueryPrograms.DisplayTopNRecords();
-            // LinqQueryPrograms.NthMaxGrade();
-            //LinqQueryPrograms.LinqStatementMethod();
-            //LinqQueryPrograms.FindWordsStartsWithL();
+            LinqQueryPrograms.PositiveNoLinqMethod();
+            LinqQueryPrograms.DisplayNumNFrequency();
+            LinqQueryPrograms.CharNFrequencyMethod("apple is my favrate fruit");
+            LinqQueryPrograms.StartsEndsWithCharMethod();
+             LinqQueryPrograms.DisplayTopNRecords();
+             LinqQueryPrograms.NthMaxGrade();
+            LinqQueryPrograms.LinqStatementMethod();
+            LinqQueryPrograms.FindWordsStartsWithL();
             LinqQueryPrograms.Multiple4Or6Method();
         }
     }

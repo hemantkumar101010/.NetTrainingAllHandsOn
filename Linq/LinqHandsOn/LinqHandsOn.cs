@@ -155,11 +155,6 @@ namespace LinqHandsOn
             Console.WriteLine(QuerySyntax2);
             Console.ReadLine();
         }
-
-        public static void GroupByMethod()
-        {
-
-        }
     }
 
 }

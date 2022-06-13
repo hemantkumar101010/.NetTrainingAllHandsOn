@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 namespace CharacterCountingSystem
 {
     internal class Program
-    {
-       static  ArrayList al = new ArrayList();
-       
+    {  
         static void Main(string[] args)
         {
-            //reading string from the local file
+            //creating txt in the local file
             FileStream fileStream = new FileStream(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\Collections\CharacterCountingSystem\string.txt", FileMode.Append, FileAccess.Write);
             StreamWriter streamWriter = new StreamWriter(fileStream);
 
@@ -23,7 +21,7 @@ namespace CharacterCountingSystem
 
             // Read entire text file content in one string  
             string myString = File.ReadAllText(@"C:\Users\iamte\Desktop\.NetTrainingAssignmentRepo\.NetTrainingAllHandsOn\Collections\CharacterCountingSystem\string.txt");
-            myString.ToLower();
+            myString = myString.ToLower();
 
             //creating obj of charsCounting
             CharsCounting charsCounting = new CharsCounting();

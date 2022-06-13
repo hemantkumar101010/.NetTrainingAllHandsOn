@@ -57,19 +57,17 @@ namespace LinqQueryProgrammingQuestions
                               select resultSubItem).FirstOrDefault();
 
                 Console.WriteLine($"Number {number} appears {resultItems.Count()} times.");
-
             }
-
         }
+        /* 3.	Write a program in C# Sharp to display the characters and frequency of character from giving string
 
+                Input the string: apple
+                Expected Output:
+                The frequency of the characters are :
+                Character a: 1 times */
         public static void CharNFrequencyMethod(string myString)
         {
-            /* 3.	Write a program in C# Sharp to display the characters and frequency of character from giving string
-
-                    Input the string: apple
-                    Expected Output:
-                    The frequency of the characters are :
-                    Character a: 1 times */
+        
             char[] charactersArr= myString.ToCharArray();
 
             Console.WriteLine("Input string is :"+myString);
@@ -84,9 +82,7 @@ namespace LinqQueryProgrammingQuestions
                               select resultSubItem).FirstOrDefault();
 
                 Console.WriteLine($"Character {character}: {resultItems.Count()} times");
-
             }
-
         }
 
         /*4.	Write a program in C# Sharp to find the string which starts and ends with a specific character
@@ -110,7 +106,7 @@ namespace LinqQueryProgrammingQuestions
                   Console.WriteLine("The cities are :");
                   foreach(var city in displayCityLsit)
                   {
-                    Console.Write($"{city} ");
+                    Console.Write($"{city}, ");
                   }
             Console.WriteLine();
             Console.Write("Input starting character for the string :");
@@ -124,11 +120,14 @@ namespace LinqQueryProgrammingQuestions
                         where city.StartsWith(startWith)&&city.EndsWith(endsWith)
                         select city).FirstOrDefault();
 
-            Console.WriteLine($"The city starting with {startWith} and ending with {endsWith} is :{resCity}");
+            Console.WriteLine($"The city starting with {startWith} and ending with {endsWith} is : {resCity}");
         }
-/*5.	Write a program in C# Sharp to display the top n-th records.*/
+
+            /* 5.	Write a program in C# Sharp to display the top n-th records.*/
         public static void DisplayTopNRecords()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             int[] records = { 5, 7, 13, 24, 6, 9, 8, 7 };
             Console.Write("How many records you want to display ? :");
             int input = Convert.ToInt32(Console.ReadLine());
@@ -148,6 +147,8 @@ namespace LinqQueryProgrammingQuestions
         //list of students.
         public static void NthMaxGrade()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             List<Students> stulist = new List<Students>();
             stulist.Add(new Students { StuId = 1, StuName = " Joseph ", GrPoint = 800 });
             stulist.Add(new Students { StuId = 2, StuName = "Alex", GrPoint = 458 });
@@ -180,19 +181,20 @@ namespace LinqQueryProgrammingQuestions
                               where stulistitems.GrPoint == item
                               select stulistitems).ToList();
             }  
-                foreach(var resultitem in result)
-                {
-                    Console.WriteLine($"id: {resultitem.StuId} name: {resultitem.StuName} Achived grade points: {resultitem.GrPoint}");
-                }
-
                 
+            foreach(var resultitem in result)
+            {
+                    Console.WriteLine($"id: {resultitem.StuId} name: {resultitem.StuName} Achived grade points: {resultitem.GrPoint}");
+            }
                 Console.WriteLine();
-            
         }
+
+
         //7.    linq statement for people with last name that starts with the letter D
-        //8.	Number of people whose last name starts with the letter D
         public static void LinqStatementMethod()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             var people = new List<Person>()
         {
             new Person("Bill", "Smith", 41),
@@ -220,25 +222,32 @@ namespace LinqQueryProgrammingQuestions
             }
 
             //8.	Number of people whose last name starts with the letter D
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine($"Number of people whose name startswith {s} are: {res.Count()}");
 
-            //query
+            
+
             //9.	Write linq statement for first Person Older Than 40 In Descending Alphabetical Order By First Name
             var resdescName = (from peopleItem in people
                                where peopleItem.Age>40
                                orderby peopleItem.Fname descending
                                select peopleItem.Fname).ToList();
+            Console.WriteLine();
 
-      
-            foreach(var resultitem in resdescName)
+            foreach (var resultitem in resdescName)
             {
                 Console.Write($"{resultitem}, ");
             }
 
         }
+
+
         //10.	Find the words in the collection that start with the letter 'L'
         public static void FindWordsStartsWithL()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             List<string> fruits = new List<string>() { "Lemon", "Apple", "Orange", "Lime", "Watermelon", "Loganberry" };
 
             var outputList = (from froutList in fruits
@@ -250,12 +259,14 @@ namespace LinqQueryProgrammingQuestions
                 Console.Write($"{resultitem}, ");
             }
             Console.WriteLine("");
-
         }
+
 
         //11.	Which of the following numbers are multiples of 4 or 6
         public static void Multiple4Or6Method()
         {
+            Console.WriteLine();
+            Console.WriteLine();
             List<int> mixedNumbers = new List<int>()
             {
                 15, 8, 21, 24, 32, 13, 30, 12, 7, 54, 48, 4, 49, 96
@@ -271,9 +282,7 @@ namespace LinqQueryProgrammingQuestions
                 Console.Write($"{resultitem}, ");
             }
             Console.WriteLine();
-
         }
-
     }
 
     internal class Person
@@ -293,8 +302,6 @@ namespace LinqQueryProgrammingQuestions
     {
         public int StuId { get; set; }
         public string StuName { get; set; }    
-        public int GrPoint { get; set; }   
-
+        public int GrPoint { get; set; }
     }
-  
 }

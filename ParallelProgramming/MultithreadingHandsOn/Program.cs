@@ -14,7 +14,7 @@ namespace MultithreadingHandsOn
             TaskParallelExecutions taskParallelExecutions = new TaskParallelExecutions();
 
 
-            //taskParallelExecutions.DisplayCars();
+            taskParallelExecutions.DisplayCars();
 
             //creating threads
 

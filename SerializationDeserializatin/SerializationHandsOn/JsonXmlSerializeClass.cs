@@ -69,7 +69,7 @@ namespace SerializationHandsOn
             {
                 Console.WriteLine(ebill.CustomerId+" "+ebill.CustomerName+" "+ebill.NoOfUnits+" "+ebill.Total);
             }
-            Console.WriteLine(list.Count);
+            //Console.WriteLine(list.Count);
         }
     }
 

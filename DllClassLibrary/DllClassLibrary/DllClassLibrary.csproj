@@ -44,6 +44,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TestClassLibrary">
+      <HintPath>..\..\SerializationDeserializatin\TestClassLibrary\bin\Debug\TestClassLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />

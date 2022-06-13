@@ -11,7 +11,7 @@ namespace LinqHandsOn
         static void Main(string[] args)
         {
             //deffered and immidiate query execution method
-            //LinqHandsOn.DefferedNImmediateExeMethod();
+           // LinqHandsOn.DefferedNImmediateExeMethod();
 
             //single and singleOrDefaul linq method for fetch data
             //LinqHandsOn.SignleNDefaultSingleMethod();
@@ -20,7 +20,7 @@ namespace LinqHandsOn
             //LinqHandsOn.FirstNFirstDefaultMethod();
 
             //groupby linq method
-            LinqGroupBy.LinqGroupByMethod();
+            //LinqGroupBy.LinqGroupByMethod();
         }
 
     }

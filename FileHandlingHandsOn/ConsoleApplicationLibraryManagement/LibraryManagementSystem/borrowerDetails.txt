@@ -1,7 +1,0 @@
-1,Sonali,Sql,23-05-2022
-2,Hemant,Algo,23-05-2022
-3,Katrina,DSA,23-05-2022
-4,Rohan,C++,24-05-2022
-5,Kriti,Coding,24-05-2022
-6,karina,LearnC,25-05-2022
-7,Rahul,Java,25-05-2022

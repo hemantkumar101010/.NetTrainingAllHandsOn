@@ -1,0 +1,12 @@
+links:
+https://www.geeksforgeeks.org/what-is-reflection-in-c-sharp/
+
+Reflection is the process of describing the metadata of types, methods and fields in a code. 
+The namespace System.Reflection enables you to obtain data about the loaded assemblies, the elements within them 
+like classes, methods and value types.
+
+Matadata : 
+Informs about Data of a Data. ie. number of or name of properties and methods in a dll files.
+
+A scenerio where: runtime only i want to access/invoke a method or create an object before that if class name is Course then only i want to
+invoke otherwise not. so using reflection we can easily do this .

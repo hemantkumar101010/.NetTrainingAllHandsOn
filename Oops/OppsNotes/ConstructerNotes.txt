@@ -1,0 +1,29 @@
+Constructers:
+Whenever a class or struct is created, its constructor is called. A class or struct may have multiple constructors that take different arguments. Constructors enable the programmer to set default values, limit instantiation, and write code that is flexible and easy to read.
+
+Constructor syntax:
+A constructor is a method whose name is the same as the name of its type(Class Name). Its method signature includes only an optional access modifier, the method name and its parameter list; it does not include a return type.
+
+Static Constructers:
+A class or struct can also have a static constructor, which initializes static members of the type. Static constructors are parameterless. If you don't provide a static constructor to initialize static fields, the C# compiler initializes static fields to their default value
+
+Example Of Static Constructer:
+public class Adult : Person
+{
+   private static int minimumAge;
+
+   public Adult(string lastName, string firstName) : base(lastName, firstName)
+   { }
+
+   static Adult()
+   {
+      minimumAge = 18;
+   }
+
+   // Remaining implementation of Adult class.
+}
+
+Usage:
+>A typical use of static constructors is when the class is using a log file and the constructor is used to write entries to this file.
+>Static constructors are also useful when creating wrapper classes for unmanaged code, when the constructor can call the LoadLibrary method.
+>Static constructors are also a convenient place to enforce run-time checks on the type parameter that cannot be checked at compile time via type-parameter constraints.

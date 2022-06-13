@@ -4,6 +4,9 @@ https://zetcode.com/csharp/async-await/
 https://o7planning.org/10553/csharp-multithreading
 https://www.wikitechy.com/tutorials/csharp/csharp-multithreading
 
+https://education.launchcode.org/csharp-web-development/chapters/control-flow-and-collections/collections.html#gradebook-three-ways
+https://www.c-sharpcorner.com/article/introduction-to-multithreading-in-C-Sharp/
+
 
 What is Parallel Programming?
 Parallel programming is a programming technique wherein the execution flow of the application is broken up into pieces that will be done at the same 

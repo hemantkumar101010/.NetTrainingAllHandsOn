@@ -20,6 +20,8 @@ namespace MultithreadingHandsOn
             {
                  "Lemborghini","Fortunure","Ford","Audi","Xuv"
             };
+
+            //executing list items in non - sequencial manner 
             Parallel.ForEach(carCollections, car => ShowData(car));
 
             //execution of 2 function parallerly 

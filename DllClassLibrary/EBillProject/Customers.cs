@@ -9,11 +9,11 @@ namespace EBillProject
 {
     public class EBill
     {
-        public int CustomerId { get; set; }
-        public string CustomerName { get; set; }
-        public int NoOfUnits { get; set; }
-        public int UnitPerCost { get; set; } = 7;
-        public int Total { get; set; }
+        private int CustomerId { get; set; }
+        private string CustomerName { get; set; }
+        private int NoOfUnits { get; set; }
+        public static int UnitPerCost { get; set; } = 7;
+        private int Total { get; set; }
 
         public void WriteCustomerDetailsFile()
         {
