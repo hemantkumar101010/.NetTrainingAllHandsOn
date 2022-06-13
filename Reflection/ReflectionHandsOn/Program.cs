@@ -12,11 +12,12 @@ namespace ReflectionHandsOn
         {
             Type type = typeof(Employee);
 
+
             var members = type.GetMembers();
             Console.WriteLine($"Following {members.Count()} members are available for Eyployee type : ");
             foreach (var member in members)
             {
-                Console.WriteLine($"{member}");
+                Console.WriteLine($"{member} ");
             }
             Console.WriteLine();
 
