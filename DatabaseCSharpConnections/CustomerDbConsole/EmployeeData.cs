@@ -35,5 +35,85 @@ namespace CustomerDbConsole
             sqlConnection.Close();
             return "Inserted";
         }
+
+        //HandsOn : 14-06-2022
+
+        //select all records in Employee table
+        public DataTable SelectEmployee()
+        {
+            SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection stablishmentg
+            SqlCommand cmd = new SqlCommand("select* from Employee", sqlConnection);
+            sqlConnection.Open();//connection state
+            SqlDataReader sqlDataReader = cmd.ExecuteReader();//execute select statement
+
+            DataTable dataTable = new DataTable();
+            dataTable.Load(sqlDataReader);
+
+            sqlConnection.Close();
+            return dataTable;
+        }
+
+        //select Employee by EmployeeID
+        public DataTable SelectEmployeeByEmployeeId(int employeeId)
+        {
+
+            SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection establishment
+            string db = sqlConnection.Database;
+            SqlCommand cmd = new SqlCommand("select * from Employee where EmpId=" + employeeId, sqlConnection);
+            sqlConnection.Open();//connection state is open
+
+            SqlDataReader dataReader = cmd.ExecuteReader();//execute select statment
+
+            DataTable dataTable = new DataTable();
+            dataTable.Load(dataReader);
+            //DataTable, DataSet
+            sqlConnection.Close(); //connection state is close
+            return dataTable;
+        }
+
+        //delete a perticular row by Customerid
+        public string DeleteInEmployee(int EmployeeId)
+        {
+            SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection establishment
+            SqlCommand cmd = new SqlCommand("delete from Employee where EmpId=" + EmployeeId, sqlConnection);
+            sqlConnection.Open();//connection state is open
+            int result = cmd.ExecuteNonQuery();//execute my sql commands and return no of rows affected
+            sqlConnection.Close(); //connection state is close
+            if (result == 0)
+                return "Not Deleted";
+            return "Deleted";
+        }
+
+
+        //update a perticular row by EmployeeId
+        public string UpdateEmployee()
+        {
+            Console.Write("Enter employee Id to update: ");
+            int EmployeeId = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter employee name  to update: ");
+            string EmployeeName = Console.ReadLine();
+
+
+            Console.Write("Enter post name  to update: ");
+            string postName = (Console.ReadLine());
+
+            Console.Write("Enter age to update: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter emp. custid to update: ");
+            string empcusId = (Console.ReadLine());
+
+
+            //update book data into sqlserver
+            SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection establishment
+            SqlCommand cmd = new SqlCommand("update Employee set EmpName='" + EmployeeName + "' , EmpPostName='" + postName + "' , EmpAge=" + age + ", EmpCustomerId='" + empcusId + "' where EmpId=" + EmployeeId + "", sqlConnection);
+            sqlConnection.Open();//connection state is open
+            int result = cmd.ExecuteNonQuery();//execute my sql commands 1
+            sqlConnection.Close(); //connection state is close
+            if (result == 0)
+                return "Not Updated";
+            return "Updated";
+        }
     }
 }
