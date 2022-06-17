@@ -22,7 +22,7 @@ Meanwhile, admin can see entire application submitted by Customer and Total Cost
     public class SuperAdmin
     {
         public static string sqlConnectionStr = @"Data Source=LAPTOP-QM194TV4\SQLEXPRESS;Initial Catalog=EventManagementDb;Integrated Security=True";
-        public void IMSuperAdmin()
+        public void SuperAdminM()
         {
             Console.WriteLine("---------------WELCOME TO SUPER ADMIN MUDULE---------------");
             Console.WriteLine("Super admin is allowed to create a ADMIN only.");
@@ -42,25 +42,43 @@ Meanwhile, admin can see entire application submitted by Customer and Total Cost
                 return;
             } 
         }
-
-        public string CreateAdmin()
+        public void CreateAdmin()
         {
-            Console.Write("Enter Admin name: ");
-            string adminName = (Console.ReadLine());
-
-            Console.Write("Enter Admin Role(SuperAdmin/Admin): ");
-            string adminRole = Console.ReadLine();
-
-
-            //insert into Admin Table
+            SuperAdmin superAdmin=new SuperAdmin();
+            superAdmin.ShowAllAdminRequest();
+            Console.WriteLine();
+            Console.WriteLine("Enter Admin id of a person to give access of admin-functions");
+            int id = Convert.ToInt32(Console.ReadLine());   
+            Console.WriteLine("Set status for a Admin request");
+            string status = (Console.ReadLine());
 
             #region disconnected-mode
             SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection stablishmentg
-            SqlDataAdapter sda = new SqlDataAdapter("insert into AdminTable values('" + adminName + "','" + adminRole + "')", sqlConnection);
+            SqlDataAdapter sda = new SqlDataAdapter("update AdminRegistrationTable set Status='"+ status+"' where AdminId='"+id+"' ", sqlConnection);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            return "Admin Created";
             #endregion
         }
+        public void ShowAllAdminRequest()
+        {
+            #region disconnected-mode
+            SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection stablishmentg
+            SqlDataAdapter sda = new SqlDataAdapter("select* from AdminRegistrationTable ", sqlConnection);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            Console.WriteLine("AId\tAName\tStatus");
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for(int j = 0; j < dt.Columns.Count; j++)
+                {
+                    if(j!=2&&j!=3)
+                       Console.Write($"{dt.Rows[i][j]}\t");
+                }
+                Console.WriteLine();
+            }
+            #endregion
+        }
+
     }
 }

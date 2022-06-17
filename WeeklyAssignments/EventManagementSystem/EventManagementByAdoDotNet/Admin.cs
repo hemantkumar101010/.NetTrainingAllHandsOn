@@ -11,8 +11,7 @@ namespace EventManagementByAdoDotNet
     internal class Admin
     {
         public static string sqlConnectionStr = @"Data Source=LAPTOP-QM194TV4\SQLEXPRESS;Initial Catalog=EventManagementDb;Integrated Security=True";
-
-         public void Adminportal()
+        public void Adminportal()
         {
            
             Console.WriteLine("---------------WELCOME TO ADMIN MUDULE---------------");
@@ -23,7 +22,8 @@ namespace EventManagementByAdoDotNet
             Console.WriteLine("Enter 2 to create a new type Event");
 
             Console.WriteLine("Enter 3 to see all Booking records.");
-            Console.WriteLine("Enter 4 to logout.");
+            Console.WriteLine("Enter 4 to approve a event.");
+            Console.WriteLine("Enter 5 to logout.");
 
             Admin admin = new Admin();
             int i = Convert.ToInt32(Console.ReadLine());
@@ -46,11 +46,15 @@ namespace EventManagementByAdoDotNet
             }
             else if (i == 4)
             {
+                admin.ApprovalFunction();
+                goto Adminportal;
+            }
+            else if (i == 5)
+            {
                 return;
             }
         }
-
-         public void InsertDecoration()
+        public void InsertDecoration()
         {
 
             Console.Write("Enter Decotation Type(Normal/Gold/Premium): ");
@@ -69,8 +73,7 @@ namespace EventManagementByAdoDotNet
             
             #endregion
         }
-
-         public void InsertFoodItems()
+        public void InsertFoodItems()
         {
 
             Console.Write("Enter Food Item name ");
@@ -88,7 +91,6 @@ namespace EventManagementByAdoDotNet
             sqlConnection.Close();
             #endregion
         }
-
         public string InsertEventTable()
         {
             Console.Write("Enter Event name: ");
@@ -112,32 +114,64 @@ namespace EventManagementByAdoDotNet
             return "Inserted";
             #endregion
         }
-
         public void DisplayAllBookings()
         {
             Admin obj = new Admin();
             DataTable dt = obj.ShowAllBookings();
-            Console.WriteLine("CId\tCName\tCAddrs  Mobile\tEventName\tFoodIds\tDId\tTPerson\tEventCost");
+            Console.WriteLine("CName\tMobile\t  BId\tCId\tEventName\tFoodIds\tDId\tTPerson\tStatus\t\tCost");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
-                    Console.Write(dt.Rows[i][j] + "\t");
+                    if(j==1)
+                      Console.Write(dt.Rows[i][j]);
+                    else
+                        Console.Write(dt.Rows[i][j] + "\t");
                 }
                 Console.WriteLine();
             }
         }
         public DataTable ShowAllBookings()
         {
+            //SELECT table1.column1, table2.column2... FROM table1 INNER JOIN table2 ON table1.common_filed =table2.common_field;
             #region disconnected-mode
             SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection stablishmentg
-            SqlDataAdapter sda = new SqlDataAdapter("select* from CustomerTable ", sqlConnection);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT c1.CustomerName,c1.Mobile,c2.*  FROM CustomerRegistrationTable AS c1 INNER JOIN CustomerTable AS c2 ON c1.CustomerId=c2.CustomerId", sqlConnection);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             return dt;
             #endregion
         }
+        public void ApprovalFunction()
+        {
+            ApprovalFunction:
+            DisplayAllBookings();
+            Console.WriteLine();
+            Console.WriteLine("Approve booking from the above list.");
+            Console.WriteLine();
 
+            Console.WriteLine("Enter customer id from the above list to approve/reject.");
+            Console.WriteLine("Enter 0 to to go back.");
+            
+            int custId = Convert.ToInt32(Console.ReadLine());
+            if(custId == 0)
+            {
+                return;
+            }
+            else if(custId == 1)
+            {
+                Console.WriteLine("Enter the status accordingly(Approved/Rejected).");
+                string status = Console.ReadLine();
 
+                #region disconnected-mode
+                SqlConnection sqlConnection = new SqlConnection(sqlConnectionStr);//connection establishment
+                SqlDataAdapter sda = new SqlDataAdapter("update CustomerTable set Status='" + status + "' where CustomerId=" + custId + "", sqlConnection);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                goto ApprovalFunction;
+                #endregion
+            }
+
+        }
     }
 }
