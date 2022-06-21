@@ -3,6 +3,7 @@ using OrdersData.Entities;
 using System;
 using MailKit.Net.Smtp;
 using MimeKit;
+using System.Text.RegularExpressions;
 
 namespace OrderAssignment
 {
@@ -26,13 +27,22 @@ namespace OrderAssignment
                 Console.WriteLine($"{i.ItemName}\t{i.ItemsRate}\t{i.ItemQty}");
             }
         }
+        public void PrintCDetails(string yourMail)
+        {
+            Console.WriteLine("your registration details:");
+            CRUDManager obj = new CRUDManager();
+            Customer cus = obj.YourRegDetails(yourMail);
+            
+            Console.WriteLine($"{cus.CustomerFName}\t{cus.CustomerLName}\t{cus.CustomerPhone}\t{cus.CustomerEmail}\t{cus.CustomerPassword}");
+           
+        }
         public void ItemMasterMethods()
         {
             CRUDManager obj = new CRUDManager();
-            // MAIN_MENU:
+           
             Console.WriteLine("Welcome to Item Master portal.");
             Console.WriteLine();
-
+        MAIN_MENU:
             Console.WriteLine("Enter 1 to add item in Items Table.");
             Console.WriteLine("Enter 2 to update item in Items Table.");
             Console.WriteLine("Enter 3 to list all item in Items Table.");
@@ -73,6 +83,18 @@ namespace OrderAssignment
                 obj.Insert(new Item { ItemName = ItemNameIs, ItemsRate = ItemRateIs, ItemQty = ItemsQtyIs });
                 Console.WriteLine("Data inserted");
 
+                Console.WriteLine("Enter 1 to go back.");
+                Console.WriteLine("Enter 2 to exit.");
+                int i = Convert.ToInt32(Console.ReadLine());
+                if (i == 1)
+                {
+                    goto MAIN_MENU;
+                }
+                else if (i == 2)
+                {
+                    return;
+                }
+
             }
             else if (choice == 2)
             {
@@ -84,17 +106,56 @@ namespace OrderAssignment
                 ItemsQtyIs = Convert.ToInt32(Console.ReadLine());
 
                 obj.Update(ItemNameIs, new Item { ItemName = ItemNameIs, ItemsRate = ItemRateIs, ItemQty = ItemsQtyIs });
+                Console.WriteLine("Records updated!");
+                
+                Console.WriteLine("Enter 1 to go back.");
+                Console.WriteLine("Enter 2 to exit.");
+                int i = Convert.ToInt32(Console.ReadLine());
+                if (i == 1)
+                {
+                    goto MAIN_MENU;
+                }
+                else if (i == 2)
+                {
+                    return;
+                }
             }
             else if (choice == 3)
             {
                 Console.WriteLine("All available items are:");
                 PrintValues();
+
+                Console.WriteLine("Enter 1 to go back.");
+                Console.WriteLine("Enter 2 to exit.");
+                int i = Convert.ToInt32(Console.ReadLine());
+                if (i == 1)
+                {
+                    goto MAIN_MENU;
+                }
+                else if (i == 2)
+                {
+                    return;
+                }
             }
             else if (choice == 4)
             {
                 Console.WriteLine("Enter item name to delete its record from the list.");
                 ItemNameIs = Console.ReadLine();
                 obj.DeleteI(ItemNameIs);
+
+                Console.WriteLine("Records deleted!");
+
+                Console.WriteLine("Enter 1 to go back.");
+                Console.WriteLine("Enter 2 to exit.");
+                int i = Convert.ToInt32(Console.ReadLine());
+                if (i == 1)
+                {
+                    goto MAIN_MENU;
+                }
+                else if (i == 2)
+                {
+                    return;
+                }
 
             }
         }
@@ -112,9 +173,19 @@ namespace OrderAssignment
             int choice = Convert.ToInt32(Console.ReadLine());
             if (choice == 1)
             {
+               CustomerEmail:
                 #region customer-registration
                 Console.WriteLine("Enter your mail.");
                 string mail = Console.ReadLine();
+
+                string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+                Regex regex = new Regex(pattern);
+                Match match = regex.Match(mail);
+                if (!match.Success)
+                {
+                    Console.WriteLine($"{mail} is not Valid Email Address");
+                    goto CustomerEmail;
+                }
                 Console.WriteLine("Enter first name");
                 string fname = Console.ReadLine(); ;
                 Console.WriteLine("Enter last name");
@@ -190,19 +261,67 @@ namespace OrderAssignment
                     CustomerFeaturs:
                         Console.WriteLine("Choose one of the following options.");
                         Console.WriteLine();
-                        Console.WriteLine("Enter 1 to update your registration details.");
-                        Console.WriteLine("Enter 2 to see your registration details.");
-                        Console.WriteLine("Enter 3 to delete your account/registration details.");
+                 
+                        Console.WriteLine("Enter 1 to see your registration details.");
+                        Console.WriteLine("Enter 2 to delete your account/registration details.");
+                        Console.WriteLine("Enter 3 to update your account details.");
                         int choiceInCustomer = Convert.ToInt32(Console.ReadLine());
 
                         if(choiceInCustomer == 1)
                         {
-                            crudManager.YourRegDetails(yourMail);
+                            PrintCDetails(yourMail);
+                            Console.WriteLine("Enter 1 to go back.");
+                            Console.WriteLine("Enter 2 to logout.");
+                            int i = Convert.ToInt32(Console.ReadLine());
+                            if (i == 1)
+                            {
+                                goto CustomerFeaturs;
+                            }
+                            else if (i == 2)
+                            {
+                                return;
+                            }
                         }
                         else if (choiceInCustomer == 2)
                         {
 
                             crudManager.Delete(yourMail);
+
+                            Console.WriteLine("Enter 1 to go back.");
+                            Console.WriteLine("Enter 2 to logout.");
+                            int i = Convert.ToInt32(Console.ReadLine());
+                            if (i == 1)
+                            {
+                                goto CustomerFeaturs;
+                            }
+                            else if (i == 2)
+                            {
+                                return;
+                            }
+                        }
+                        else if (choiceInCustomer == 3)
+                        {
+
+                           
+                            Console.WriteLine("Enter new phone");
+                            int newPhone = Convert.ToInt32(Console.ReadLine());
+
+                            Console.WriteLine("Enter new password");
+                            string newPass = Console.ReadLine();
+
+                            crudManager.UpdateAccount(yourMail,new Customer { CustomerPhone=newPhone,CustomerPassword=newPass});
+
+                            Console.WriteLine("Enter 1 to go back.");
+                            Console.WriteLine("Enter 2 to logout.");
+                            int i = Convert.ToInt32(Console.ReadLine());
+                            if (i == 1)
+                            {
+                                goto CustomerFeaturs;
+                            }
+                            else if (i == 2)
+                            {
+                                return;
+                            }
                         }
                     }
                     else

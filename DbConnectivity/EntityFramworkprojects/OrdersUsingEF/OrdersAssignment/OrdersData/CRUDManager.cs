@@ -71,7 +71,23 @@ namespace OrdersData
             }
         }
 
+        public void UpdateAccount(string mail,Customer updatecustomer)
+        {
+            var customer  = demoDbContext.Customers.Where(x => x.CustomerEmail == mail)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync().Result;
 
+            customer.CustomerPhone=updatecustomer.CustomerPhone;
+            customer.CustomerPassword = updatecustomer.CustomerPassword;
+
+
+            // Entity state : Modified
+            demoDbContext.Customers.Update(customer);
+
+            // This issues insert statement
+            demoDbContext.SaveChanges();
+
+        }
         public Customer YourRegDetails(string email)
         {
 
@@ -92,6 +108,16 @@ namespace OrdersData
 
         #region items-crud
 
+        public bool ItemDuplicate(string itmeIs)
+        {
+            var item1 = demoDbContext.Items.Where(x => x.ItemName == itmeIs).FirstOrDefault();
+            if (item1 == null)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
         public void Insert(Item item)
         {
             demoDbContext.Items.Add(item);
