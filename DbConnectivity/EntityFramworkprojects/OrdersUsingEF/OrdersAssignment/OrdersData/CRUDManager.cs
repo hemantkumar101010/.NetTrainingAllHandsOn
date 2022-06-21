@@ -1,0 +1,141 @@
+﻿using Microsoft.EntityFrameworkCore;
+using OrdersData.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OrdersData
+{
+    public class CRUDManager
+    {
+        private DemoDbContext demoDbContext;
+
+        public CRUDManager()
+        {
+            demoDbContext = new DemoDbContext();
+        }
+
+        #region customer crud
+        public void Insert(Customer customer)
+        {
+            demoDbContext.Customers.Add(customer);
+            demoDbContext.SaveChanges();
+        }
+
+        public void Delete(string customerEmail)
+        {
+            var customer = demoDbContext.Customers.Where(x => x.CustomerEmail == customerEmail).FirstOrDefault();
+            if (customer == null)
+            {
+                throw new Exception($"EmployeeEducation with ID:{customerEmail} Not Found");
+            }
+
+            // Entity state : Deleted
+            demoDbContext.Customers.Remove(customer);
+
+            // This issues insert statement
+            demoDbContext.SaveChanges();
+        }
+
+        public bool EmailPresent(string email)
+        {
+            var customer = demoDbContext.Customers.Where(x => x.CustomerEmail == email)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync().Result;
+
+            if (customer == null)
+            {
+               return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool passwordPresent(string pass)
+        {
+            var customer = demoDbContext.Customers.Where(x => x.CustomerPassword == pass)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync().Result;
+
+            if (customer == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public Customer YourRegDetails(string email)
+        {
+
+            var customer = demoDbContext.Customers.Where(x => x.CustomerEmail == email)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync().Result;
+
+            if (customer == null)
+            {
+                Console.WriteLine($"EmployeeEducations with ID:{email} Not Found");
+            }
+
+            return customer;
+        }
+
+        #endregion
+
+
+        #region items-crud
+
+        public void Insert(Item item)
+        {
+            demoDbContext.Items.Add(item);
+            demoDbContext.SaveChanges();
+        }
+
+        public List<Item> ListItems()
+        {
+            var item = demoDbContext.Items.ToList();
+            return item;
+        }
+
+        public void Update(string itemName, Item itemUpdate)
+        {
+            var item1 = demoDbContext.Items.Where(x => x.ItemName == itemName).FirstOrDefault();
+            if (item1 == null)
+            {
+                Console.WriteLine($"{item1} Not Found");
+            }
+
+            item1.ItemsRate = itemUpdate.ItemsRate;
+            item1.ItemQty = itemUpdate.ItemQty;
+
+            // Entity state : Modified
+            demoDbContext.Items.Update(item1);
+
+            // This issues insert statement
+            demoDbContext.SaveChanges();
+        }
+        public void DeleteI(string itemName)
+        {
+            var item = demoDbContext.Items.Where(x => x.ItemName == itemName).FirstOrDefault();
+            if (item == null)
+            {
+                throw new Exception($"{item} Not Found");
+            }
+
+            // Entity state : Deleted
+            demoDbContext.Items.Remove(item);
+
+            // This issues insert statement
+            demoDbContext.SaveChanges();
+        }
+
+        #endregion
+    }
+}
